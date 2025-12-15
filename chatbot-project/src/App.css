@@ -1,0 +1,18 @@
+.app-container{
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.welcome-message{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.loading-image{
+  width: 40px;
+  margin: -15px;
+}
