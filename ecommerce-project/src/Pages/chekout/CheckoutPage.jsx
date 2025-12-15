@@ -6,6 +6,7 @@ export function CheckoutPage() {
         
         <>
             <title>Checkout</title>
+            <link rel="icon" href="../../../publics" />
 
             <CheckoutHeader />
 
