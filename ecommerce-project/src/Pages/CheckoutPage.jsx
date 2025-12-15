@@ -1,6 +1,5 @@
 import './CheckoutPage.css'
-import './checkout-header.css'
-import { Header } from '../Components/Header'
+import { CheckoutHeader } from '../Components/CheckoutHeader'
 
 export function CheckoutPage() {
     return (
@@ -8,7 +7,7 @@ export function CheckoutPage() {
         <>
             <title>Checkout</title>
 
-            <Header />
+            <CheckoutHeader />
 
             <div className="checkout-page">
                 <div className="page-title">Review your order</div>
