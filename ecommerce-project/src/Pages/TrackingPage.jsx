@@ -1,25 +1,36 @@
 import { Header } from "../Components/Header"
 import './TrackingPage.css'
 import { Link } from "react-router"
+import { useParams } from "react-router"
 import { useEffect, useState } from "react"
-import axios from "axios"
+import axios from 'axios'
+import dayjs from 'dayjs'
 
-export function TrackingPage() {
-    const [cart, setCart] = useState([]);
+export function TrackingPage({cart}) {
+    const {orderId, productId} = useParams();
+    const [order, setOrder] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/cart-items')
-            .then((response) => {
-                setCart(response.data);
-            });
-    });
+        const fetchTrackingData = async() => {
+            const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+            setOrder(response.data);
+        };
+        fetchTrackingData();
+    }, [orderId])
 
+    if(!order) {
+        return null
+    }
+    const machingProductDetails = order.products.find((product) => {
+        return product.productId === productId
+    })
+    console.log(order)
     return (
-        <>
+          <>
             <title>Tracking</title>
             <link rel="icon" href="public/images/favicons/tracking-favicon.png" />
 
-            <Header cart={cart}/>
+            <Header cart={cart} />
 
             <div className="tracking-page">
                 <div className="order-tracking">
@@ -28,15 +39,15 @@ export function TrackingPage() {
                     </Link>
 
                     <div className="delivery-date">
-                        Arriving on Monday, June 13
+                        {dayjs(machingProductDetails.estimatedDeliveryTimeMS).format('dddd, MMMM D')}
                     </div>
 
                     <div className="product-info">
-                        Black and Gray Athletic Cotton Socks - 6 Pairs
+                        {machingProductDetails.product.name}
                     </div>
 
                     <div className="product-info">
-                        Quantity: 1
+                        Quantity: {machingProductDetails.quantity}
                     </div>
 
                     <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" />
