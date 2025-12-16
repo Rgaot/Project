@@ -22,7 +22,7 @@ export function HomePage() {
     return (
         <>
             <title>Ecommerce project</title>
-            <link rel="icon" href="images/favicons/home-favicon.png" />
+            <link rel="icon" href="public/images/favicons/home-favicon.png" />
 
             <Header cart={cart}/>
 
