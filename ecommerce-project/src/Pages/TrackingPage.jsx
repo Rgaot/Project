@@ -1,14 +1,25 @@
 import { Header } from "../Components/Header"
 import './TrackingPage.css'
 import { Link } from "react-router"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export function TrackingPage() {
+    const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/cart-items')
+            .then((response) => {
+                setCart(response.data);
+            });
+    });
+
     return (
         <>
             <title>Tracking</title>
             <link rel="icon" href="images/favicons/tracking-favicon.png" />
 
-            <Header />
+            <Header cart={cart}/>
 
             <div className="tracking-page">
                 <div className="order-tracking">

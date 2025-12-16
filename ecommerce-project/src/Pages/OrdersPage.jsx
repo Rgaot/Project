@@ -1,14 +1,23 @@
 import './OrdersPage.css';
 import { Header } from '../Components/Header';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export function OrdersPage() {
-    
+    const [cart, setCart] = useState([])
+    useEffect(() => {
+        axios.get('/api/cart-items')
+            .then((response) => {
+                setCart(response.data);
+            })
+    }, [])
+
     return (
         <>
-            <link rel="icon" href = "images/favicons/orders-favicon.png" />
+            <link rel="icon" href="images/favicons/orders-favicon.png" />
             <title>Orders</title>
 
-            <Header />
+            <Header cart={cart} />
 
             <div className="orders-page">
                 <div className="page-title">Your Orders</div>
