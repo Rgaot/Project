@@ -1,6 +1,6 @@
-import dayjs from "dayjs"
-import { formatCurrency } from "../../utils/Money"
 import { DelivertOptions } from "./DeliveryOptions"
+import { CartItemDetails } from "./CartItemDatails"
+import { DeliveryDate } from "./DeliveryDate"
 
 export function OrderSummury({ cart, deliveryOptions }) {
     return (
@@ -11,34 +11,10 @@ export function OrderSummury({ cart, deliveryOptions }) {
                 })
                 return (
                     <div key={cartItem.productId} className="cart-item-container">
-                        <div className="delivery-date">
-                            Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimMs).format('dddd, MMMM D')}
-                        </div>
+                        <DeliveryDate selectedDeliveryOption={selectedDeliveryOption} />
 
                         <div className="cart-item-details-grid">
-                            <img className="product-image"
-                                src={cartItem.product.image} />
-
-                            <div className="cart-item-details">
-                                <div className="product-name">
-                                    {cartItem.product.name}
-                                </div>
-                                <div className="product-price">
-                                    {formatCurrency(cartItem.product.priceCents)}
-                                </div>
-                                <div className="product-quantity">
-                                    <span>
-                                        Quantity: <span className="quantity-label">{cartItem.quantity}</span>
-                                    </span>
-                                    <span className="update-quantity-link link-primary">
-                                        Update
-                                    </span>
-                                    <span className="delete-quantity-link link-primary">
-                                        Delete
-                                    </span>
-                                </div>
-                            </div>
-
+                            <CartItemDetails cartItem={cartItem} />
                             <DelivertOptions cartItem={cartItem} deliveryOptions={deliveryOptions} />
                         </div>
                     </div>
