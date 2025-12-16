@@ -6,27 +6,26 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import dayjs from 'dayjs'
 
-export function TrackingPage({cart}) {
-    const {orderId, productId} = useParams();
+export function TrackingPage({ cart }) {
+    const { orderId, productId } = useParams();
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
-        const fetchTrackingData = async() => {
+        const fetchTrackingData = async () => {
             const response = await axios.get(`/api/orders/${orderId}?expand=products`);
             setOrder(response.data);
         };
         fetchTrackingData();
     }, [orderId])
 
-    if(!order) {
+    if (!order) {
         return null
     }
     const machingProductDetails = order.products.find((product) => {
         return product.productId === productId
     })
-    console.log(order)
     return (
-          <>
+        <>
             <title>Tracking</title>
             <link rel="icon" href="public/images/favicons/tracking-favicon.png" />
 
@@ -50,7 +49,7 @@ export function TrackingPage({cart}) {
                         Quantity: {machingProductDetails.quantity}
                     </div>
 
-                    <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" />
+                    <img className="product-image" src={machingProductDetails.product.image} />
 
                     <div className="progress-labels-container">
                         <div className="progress-label">
