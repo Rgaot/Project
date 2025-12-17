@@ -5,7 +5,7 @@ import { NavLink } from 'react-router';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
-export function Header({cart, search}) {
+export function Header({cart}) {
     const [inputText, setInputText] = useState();
     const navigate = useNavigate();
 
@@ -20,7 +20,6 @@ export function Header({cart, search}) {
 
     const searchProduct = async () => {
         await navigate(`/?search=${inputText}`);
-        console.log(search)
     };
     
     return (
