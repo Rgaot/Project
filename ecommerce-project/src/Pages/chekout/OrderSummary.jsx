@@ -14,8 +14,16 @@ export function OrderSummury({ cart, deliveryOptions, loadCart }) {
                         <DeliveryDate selectedDeliveryOption={selectedDeliveryOption} />
 
                         <div className="cart-item-details-grid">
-                            <CartItemDetails cartItem={cartItem} selectedDeliveryOption={selectedDeliveryOption} />
-                            <DelivertOptions cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
+                            <CartItemDetails 
+                                cartItem={cartItem} 
+                                selectedDeliveryOption={selectedDeliveryOption} 
+                                loadCart={loadCart}
+                            />
+                            <DelivertOptions 
+                                cartItem={cartItem} 
+                                deliveryOptions={deliveryOptions} 
+                                loadCart={loadCart} 
+                            />
                         </div>
                     </div>
                 )
