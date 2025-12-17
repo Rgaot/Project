@@ -41,7 +41,7 @@ export function OrdersGrid({orders}) {
                                                 {orderProduct.product.name}
                                             </div>
                                             <div className="product-delivery-date">
-                                                {dayjs(orderProduct.estimatedDeliveryTimeMS).format('dddd, MMMM D')}
+                                                {dayjs(orderProduct.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                                             </div>
                                             <div className="product-quantity">
                                                 Quantity: {orderProduct.quantity}

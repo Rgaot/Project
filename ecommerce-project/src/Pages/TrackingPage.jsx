@@ -26,14 +26,9 @@ export function TrackingPage({ cart }) {
         return product.productId === productId
     });
 
-    if (!machingProductDetails) {
-        return null
-    }
-
     const totalDeliveryTimeMS = (machingProductDetails.estimatedDeliveryTimeMs - order.orderTimeMs);
     const timePassedMS = (dayjs().valueOf() - order.orderTimeMs);
-    const deliveryProgress = (totalDeliveryTimeMS / timePassedMS)*100;
-    console.log(deliveryProgress)
+    const deliveryProgress = (timePassedMS / totalDeliveryTimeMS)*100;
     return (
         <>
             <title>Tracking</title>
@@ -48,7 +43,7 @@ export function TrackingPage({ cart }) {
                     </Link>
 
                     <div className="delivery-date">
-                        {`${deliveryProgress >= 100 ? 'Deliverd on' : 'Arriving on'} : ${dayjs(machingProductDetails.estimatedDeliveryTimeMS).format('dddd, MMMM D')}`}
+                        {`${deliveryProgress >= 100 ? 'Deliverd on' : 'Arriving on'} : ${dayjs(machingProductDetails.estimatedDeliveryTimeMs).format('dddd, MMMM D')}`}
                     </div>
 
                     <div className="product-info">
