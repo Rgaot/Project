@@ -4,6 +4,7 @@ import { Fragment } from "react"
 import { Header } from "../../Components/Header"
 
 export function OrdersGrid({orders}) {
+    console.log(orders)
     return (
         <div className="orders-grid">
             {orders.map((order) => {
@@ -14,7 +15,7 @@ export function OrdersGrid({orders}) {
                             <div className="order-header-left-section">
                                 <div className="order-date">
                                     <div className="order-header-label">Order Placed:</div>
-                                    <div>{dayjs(order.orderTimeMS).format('dddd, MMMM D')}</div>
+                                    <div>{dayjs(order.orderTimeMs).format('dddd, MMMM D')}</div>
                                 </div>
                                 <div className="order-total">
                                     <div className="order-header-label">Total:</div>
@@ -41,7 +42,7 @@ export function OrdersGrid({orders}) {
                                                 {orderProduct.product.name}
                                             </div>
                                             <div className="product-delivery-date">
-                                                {dayjs(orderProduct.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
+                                                Arriving on: {dayjs(orderProduct.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                                             </div>
                                             <div className="product-quantity">
                                                 Quantity: {orderProduct.quantity}
