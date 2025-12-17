@@ -1,4 +1,4 @@
-import './Header.css';
+import './header.css';
 import SearchIcon from "../assets/images/icons/search-icon.png";
 import CartIcon from '../assets/images/icons/cart-icon.png';
 import { NavLink } from 'react-router';
