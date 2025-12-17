@@ -16,32 +16,32 @@ export function PaymentSummary({paymentsummary, loadCart}) {
             </div>
 
             {paymentsummary && (<>
-                <div className="payment-summary-row">
+                <div className="payment-summary-row" data-testId="total-items" >
                     <div>Items ({paymentsummary.totalItems}):</div>
                     <div className="payment-summary-money">{formatCurrency(paymentsummary.productCostCents)}</div>
                 </div>
 
-                <div className="payment-summary-row">
+                <div className="payment-summary-row" data-testId="shipping-cost">
                     <div>Shipping &amp; handling:</div>
                     <div className="payment-summary-money">{formatCurrency(paymentsummary.shippingCostCents)}</div>
                 </div>
 
-                <div className="payment-summary-row subtotal-row">
+                <div className="payment-summary-row subtotal-row" data-testId="total-before-tax" >
                     <div>Total before tax:</div>
                     <div className="payment-summary-money">{formatCurrency(paymentsummary.totalCostBeforeTaxCents)}</div>
                 </div>
 
-                <div className="payment-summary-row">
+                <div className="payment-summary-row" data-testId="estimated-tax">
                     <div>Estimated tax (10%):</div>
                     <div className="payment-summary-money">{formatCurrency(paymentsummary.taxCents)}</div>
                 </div>
 
-                <div className="payment-summary-row total-row">
+                <div className="payment-summary-row total-row" data-testId="total">
                     <div>Order total:</div>
                     <div className="payment-summary-money">{formatCurrency(paymentsummary.totalCostCents)}</div>
                 </div>
 
-                <button className="place-order-button button-primary" onClick={createOrder}>
+                <button className="place-order-button button-primary" onClick={createOrder} data-testId="place-order-button">
                     Place your order
                 </button>
             </>

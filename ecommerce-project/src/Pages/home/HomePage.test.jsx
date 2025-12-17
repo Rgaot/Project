@@ -5,6 +5,8 @@ import userEvent from '@testing-library/user-event'
 import axios from "axios";
 import { MemoryRouter } from "react-router";
 
+
+
 vi.mock('axios')
 describe('HomePage component', () => {
     let loadCart;
@@ -83,7 +85,6 @@ describe('HomePage component', () => {
             });
         });
         await user.selectOptions(quantitySelector2, '2').then(() => {
-
             expect(axios.post).toHaveBeenNthCalledWith(2, '/api/cart-items', {
                 productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
                 quantity: 1
