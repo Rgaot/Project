@@ -1,7 +1,7 @@
 import { expect, it, describe } from 'vitest';
 import { formatCurrency } from './Money';
 
-describe('format Currency', () => {
+describe('Format Currency', () => {
     it('format 1999 cents as $19.99', () => {
         expect(formatCurrency(1999)).toEqual('$19.99')
     });
