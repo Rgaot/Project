@@ -11,6 +11,7 @@ describe('Product Component', () => {
 
     let product;
     let loadCart = vi.fn();
+    let user;
 
     beforeEach(() => {
         product = {
@@ -24,7 +25,8 @@ describe('Product Component', () => {
             priceCents: 1090,
             keywords: ["socks", "sports", "apparel"]
         };
-        loadCart = vi.fn()
+        loadCart = vi.fn();
+        user = userEvent.setup();
     });
 
     it('displays the product details corretly', () => {
@@ -48,7 +50,6 @@ describe('Product Component', () => {
     it('add a product to the cart', async () => {
         render(<Product product={product} loadCart={loadCart}></Product>);
 
-        const user = userEvent.setup();
         const addToCartButton = screen.getByTestId('add-to-cart-button');
         await user.click(addToCartButton);
 
@@ -58,5 +59,14 @@ describe('Product Component', () => {
         });
         expect(loadCart).toHaveBeenCalled();
 
+    });
+    it('select quantity', async() => {
+        render(<Product product={product} loadCart={loadCart} />);
+
+        
+        const quantitySelector = screen.getByTestId('quantity-selector');
+        await user.selectOptions(quantitySelector, '3')
+
+        expect(quantitySelector).toHaveValue('3')
     })
 })
