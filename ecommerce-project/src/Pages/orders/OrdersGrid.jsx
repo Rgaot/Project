@@ -4,7 +4,6 @@ import { OrderDetails } from "./OrderDetails"
 
 
 export function OrdersGrid({ orders, loadCart }) {
-
     return (
         <div className="orders-grid">
             {orders.map((order) => {

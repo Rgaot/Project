@@ -2,9 +2,10 @@ import axios from "axios"
 import dayjs from "dayjs";
 import { Fragment } from "react";
 
+
 export function OrderDetails({order, loadCart}) {
     return (
-        <div className="order-details-grid">
+        <div key={order.id} className="order-details-grid">
             {order.products.map((orderProduct) => {
                 const reAddToCart = async () => {
                     await axios.post(`/api/cart-items`, {
